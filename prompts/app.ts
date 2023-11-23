@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import OpenAI from "openai";
+import OpenAI from "openai/index.mjs";
 
 const openai = new OpenAI();
 
