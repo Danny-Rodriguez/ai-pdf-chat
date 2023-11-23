@@ -5,25 +5,8 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-const knowledge = {
-  NewYork: {
-    stock: {
-      "Nike SB": {
-        "size 9": 1,
-        "size 10": 1,
-        "size 11": 3,
-        "size 12": 4
-      }
-    }
-  },
-  LosAngeles: {
-    stock: {
-      "Nike SB": {
-        "size 13": 4
-      }
-    }
-  }
-};
+const goal = "Renovate a kitchen";
+const numTasks = 5;
 
 const response = await openai.chat.completions.create({
   model: "gpt-3.5-turbo",
@@ -31,13 +14,24 @@ const response = await openai.chat.completions.create({
   messages: [
     {
       role: "system",
-      content: `You are a the BestShoes chat bot. Here is your entire knowledge. You know nothing but this knowledge: ${JSON.stringify(knowledge)}. Carefully read through the stock a few times and only consider an item to be available if it has at least 1 unit. Pay close attention to the location, and do not confuse the stock of one location with another. This could badly impact the business. If a size does not explicitly appear under a location, do not consider it in stock.`
+      content: `You are a talented task planner. The user will tell you their goal and you will generate a list of tasks for them.
+
+      You must repond in JOSN, strictly with the following:
+
+      {
+        tasks: {
+          title: string // Max 100 characters,
+          description: string // Max 120 characters,
+          difficulty: "easy" | "medium" | "hard",
+        }[],
+      }
+      `
     },
     {
       role: "user",
-      content: "Hey, I want to to buy Nike SB shoes size 13. Do you have them in stock in New York?"
+      content: `Tell me how to achive ${goal}, produce ${numTasks} tasks.`
     }
   ]
 });
 
-console.log(response.choices);
+console.log(JSON.parse(response.choices[0].message.content as string));
