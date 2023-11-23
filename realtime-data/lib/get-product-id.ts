@@ -38,7 +38,5 @@ export async function getProductId(query: string) {
   console.log("Searching for product id", query);
   const matchingNodes = await retriever.retrieve(query);
   const found = matchingNodes[0];
-  console.log("Found", found);
+  return found.node.metadata.productId;
 }
-
-await getProductId("I'm going to hike and hot and dry climates. What shoes do I need?");
