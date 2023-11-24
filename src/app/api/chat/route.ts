@@ -3,6 +3,7 @@ import { OpenAIStream, StreamingTextResponse } from "ai";
 import { createOrReadVectorStoreIndex } from "@/lib/vector-store";
 import { MetadataMode } from "llamaindex";
 import { sys } from "typescript";
+import { MAX_RESPONSE_TOKENS, trimMessages } from "@/lib/tokens";
 
 const openai = new OpenAI();
 
@@ -33,13 +34,14 @@ export async function POST(req: Request) {
     When possible, explain the reasoning for your response based on this knowledge.
     `;
 
-    console.log("knowledge", knowledge);
+    // console.log("knowledge", knowledge);
   }
 
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     temperature: 0,
-    messages: [systemMessage, ...messages],
+    max_tokens: MAX_RESPONSE_TOKENS,
+    messages: trimMessages([systemMessage, ...messages]),
     stream: true
   });
 
