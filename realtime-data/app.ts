@@ -13,6 +13,7 @@ const functions: any = {
 
     // Do anything
     // Query a database
+    // Call an API
 
     return {
       url: `https://example.com/products/${productId}`

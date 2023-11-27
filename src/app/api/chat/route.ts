@@ -2,7 +2,7 @@ import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { createOrReadVectorStoreIndex } from "@/lib/vector-store";
 import { MetadataMode } from "llamaindex";
-import { sys } from "typescript";
+// import { sys } from "typescript";
 import { MAX_RESPONSE_TOKENS, trimMessages } from "@/lib/tokens";
 
 const openai = new OpenAI();

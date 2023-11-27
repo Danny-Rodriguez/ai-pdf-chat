@@ -9,7 +9,7 @@ import { LoadingProvider } from "./providers/LoadingProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ChatPDF by Ariel Weinberger",
+  title: "ChatPDF",
   description: "Chat with your PDF files!"
 };
 
