@@ -1,11 +1,7 @@
 "use client";
 
 import { Message } from "@/components/Message";
-import {
-  CaretLeftIcon,
-  ChatBubbleIcon,
-  PaperPlaneIcon,
-} from "@radix-ui/react-icons";
+import { CaretLeftIcon, ChatBubbleIcon, PaperPlaneIcon } from "@radix-ui/react-icons";
 import { Button, Heading, IconButton, TextField } from "@radix-ui/themes";
 import { useChat } from "ai/react";
 import { useEffect, useRef } from "react";
@@ -17,7 +13,7 @@ export default function ChatPage() {
       {
         id: "initial",
         role: "assistant",
-        content: "Hello! I'm your PDF assistant. How can I help you?",
+        content: "Hello! I'm your PDF assistant. How can I help you?"
       }
     ]
   });
@@ -35,12 +31,11 @@ export default function ChatPage() {
       <div className="h-full flex-col rounded-lg shadow-lg flex bg-neutral-100 bg-opacity-10 ">
         <div className="grid grid-flow-row-dense grid-cols-12 gap-4 h-14 items-center justify-center ">
           <div className="col-span-2 pl-4 pt-1">
-            <Button
-              variant="ghost"
-              onClick={() => (window.location.href = "/upload")}
-            >
-              <CaretLeftIcon width={16} height={16} /> Upload a different file
-            </Button>
+            {window !== undefined && (
+              <Button variant="ghost" onClick={() => (window.location.href = "/upload")}>
+                <CaretLeftIcon width={16} height={16} /> Upload a different file
+              </Button>
+            )}
           </div>
           <div className="flex-1 text-center col-span-8">
             <Heading size="3">Chat with your PDF</Heading>
@@ -62,19 +57,9 @@ export default function ChatPage() {
                 <ChatBubbleIcon height={16} width={16} />
               </TextField.Slot>
               <div className="flex w-full items-center justify-center">
-                <input
-                  className="h-12 w-full bg-transparent focus:outline-none"
-                  value={input}
-                  onChange={handleInputChange}
-                  placeholder="Type your message here..."
-                />
+                <input className="h-12 w-full bg-transparent focus:outline-none" value={input} onChange={handleInputChange} placeholder="Type your message here..." />
                 <div>
-                  <IconButton
-                    type="submit"
-                    size="4"
-                    variant="solid"
-                    style={{ borderRadius: 0, borderBottomRightRadius: 5 }}
-                  >
+                  <IconButton type="submit" size="4" variant="solid" style={{ borderRadius: 0, borderBottomRightRadius: 5 }}>
                     <PaperPlaneIcon height={16} width={16} />
                   </IconButton>
                 </div>
