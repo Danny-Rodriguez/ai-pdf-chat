@@ -9,7 +9,7 @@ import { LoadingProvider } from "./providers/LoadingProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ChatPDF",
+  title: "AI ChatPDF",
   description: "Chat with your PDF files!"
 };
 
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <footer className="h-14 mt-6 text-center flex items-center justify-center text-stone-500">
                 Danny Rodriguez {new Date().getFullYear()}{" "}
                 <span>
-                  <a href="https://www.linkedin.com/in/danny-alfredo-rodriguez/">&nbsp;LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/danny-alfredo-rodriguez/">&nbsp;LinkedIn &#128279;</a>
                 </span>
               </footer>
             </div>
