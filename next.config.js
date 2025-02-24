@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   webpack: (config, options) => {
     return config;
   },
-  // useful for debugging
   experimental: {
     serverComponentsExternalPackages: ["llamaindex", "tiktoken-node"]
   }
